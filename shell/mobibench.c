@@ -752,6 +752,7 @@ void show_progress_IOPS(int pro, int IOC)
 
 void drop_caches(void)
 {
+#if 0
 #ifndef ANDROID_APP
 //	if(system("sysctl -w vm.drop_caches=3") < 0)
 	if(system("echo 3 > /proc/sys/vm/drop_caches") < 0)
@@ -761,6 +762,7 @@ void drop_caches(void)
 		setState(ERROR, "fail to drop caches");
 		return;
 	}
+#endif
 #endif
 }
 
