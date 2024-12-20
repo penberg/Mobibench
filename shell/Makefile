@@ -4,8 +4,7 @@
 
 EXENAME = mobibench
 
-SRCS = mobibench.c \
-	  sqlite3.c
+SRCS = mobibench.c
 
 INSTALL = install
 
@@ -13,6 +12,8 @@ prefix = /usr/local
 bindir = $(prefix)/bin
 
 CFLAGS = -lpthread -ldl
+
+LIBS = /home/penberg/src/penberg/limbo/target/release/liblimbo_sqlite3.a -lm
 
 #CFLAGS += -DDEBUG_SCRIPT
 
@@ -37,7 +38,7 @@ CFLAGS += -DNDEBUG=1 \
      --static
 
 all :
-	$(CROSS)gcc -o $(EXENAME) $(SRCS) $(CFLAGS)
+	$(CROSS)gcc -o $(EXENAME) $(SRCS) $(CFLAGS) $(LIBS)
 
 clean :
 	@rm -rf mobibench
